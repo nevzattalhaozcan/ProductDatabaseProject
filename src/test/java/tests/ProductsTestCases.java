@@ -7,14 +7,19 @@ import static org.testng.Assert.assertEquals;
 
 public class ProductsTestCases {
 
-    private static final String URL = "jdbc:mysql://sql333.main-hosting.eu:3306/u233976011_cydeo";
-    private static final String USERNAME = "u233976011_cydeo";
-    private static final String PASSWORD = "Szlw:Nl+7";
+    private static final String URL = System.getenv("db_url");
+    private static final String USERNAME = System.getenv("db_username");
+    private static final String PASSWORD = System.getenv("db_password");
     private static Connection connection;
     private static Statement statement;
     private ResultSet resultSet;
 
     static {
+
+        System.out.println(USERNAME);
+        System.out.println(PASSWORD);
+        System.out.println(URL);
+
         try {
             connection = DriverManager.getConnection(URL,USERNAME,PASSWORD);
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
